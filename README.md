@@ -40,9 +40,7 @@ This will create a `myapp/` directory using the template defined for the `node` 
 
 ---
 
-## Configuration (Upcoming)
-
-> **Note:** Configuration file support is already available. Custom template directories will be supported in a future release.
+## Configuration
 
 ```bash
 node cli/index.js --init
@@ -59,13 +57,26 @@ Example:
 
 ```json
 {
+  "author": "Ghostie",
+  "license": "MIT",
   "Templates": "G:/MyTemplates",
-  "NodeTemplate": "D:/CustomTemplates/node"
+  "NodeTemplate": "D:/CustomTemplates/node",
+  "PythonTemplate": "",
+  "BashTemplate": ""
 }
 ```
 
-- If `"NodeTemplate"` is defined, it overrides the default `Templates/node` directory.
-- If a key is set to `""`, that template is disabled.
+- If a template path is empty, TemplateBuilder continues with the next template source according to the resolution order.
+
+### Template Resolution Order
+
+When creating a project, TemplateBuilder searches for templates in the following order:
+
+1. `<Type>Template` (for example `NodeTemplate`).
+2. `Templates/<type>`.
+3. The bundled template included with TemplateBuilder.
+
+If a configured path does not exist, TemplateBuilder stops and reports an error instead of falling back to the next location.
 
 ---
 
