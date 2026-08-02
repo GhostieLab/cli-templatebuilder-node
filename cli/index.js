@@ -7,7 +7,7 @@ import { initConfig } from '../lib/init.js'
 const args = minimist(process.argv.slice(2))
 
 if (args.init) {
-  initConfig()
+  await initConfig()
   process.exit(0)
 }
 
