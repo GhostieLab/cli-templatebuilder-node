@@ -1,0 +1,6 @@
+bin/index.js
+lib/
+config/config.json
+.gitignore
+README.md
+package.json

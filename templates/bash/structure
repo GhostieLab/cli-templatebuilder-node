@@ -1,0 +1,5 @@
+bin/main.sh
+lib/utils.sh
+config/config.cfg
+.gitignore
+README.md

@@ -1,0 +1,26 @@
+{
+  "name": "templatebuilder",
+  "version": "0.1.0",
+  "description": "CLI tool for creating projects from custom templates.",
+  "bin": {
+    "templatebuilder": "cli/index.js"
+  },
+  "type": "module",
+  "keywords": [
+    "scaffold",
+    "cli",
+    "project",
+    "generator",
+    "templates",
+    "boilerplate"
+  ],
+  "author": "Ghostie",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.4.0",
+    "minimist": "^1.2.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
