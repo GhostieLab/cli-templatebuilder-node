@@ -7,8 +7,8 @@ import { initConfig } from '../lib/init.js'
 const args = minimist(process.argv.slice(2))
 
 if (args.init) {
-  await initConfig()
-  process.exit(0)
+  const opened = await initConfig()
+  process.exit(opened ? 0 : 1)
 }
 
 const type = args.type
