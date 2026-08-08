@@ -2,7 +2,9 @@
   "name": "${name}",
   "version": "${version}",
   "description": "",
-  "main": "bin/index.js",
+  "bin": {
+    "${name}": "bin/index.js"
+  },
   "author": "${author}",
   "license": "${license}"
 }
