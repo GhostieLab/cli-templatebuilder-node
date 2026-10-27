@@ -11,7 +11,8 @@ const args = minimist(process.argv.slice(2), {
     h: 'help',
     v: 'version'
   },
-  boolean: ['help', 'version', 'init']
+  boolean: ['help', 'version', 'init'],
+  string: ['type', 'name']
 })
 
 if (args.help) {
@@ -37,6 +38,17 @@ const name = args.name
 
 if (!type || !name) {
   console.error("❌ You need to provide both --type and --name.\n Usage: templatebuilder --type node --name myproject")
+  process.exit(1)
+}
+
+if (
+  name === '.' ||
+  name === '..' ||
+  /[<>:"/\\|?*\x00-\x1F]/.test(name) ||
+  /[. ]$/.test(name) ||
+  /^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\..*)?$/i.test(name)
+) {
+  console.error(`❌ Invalid project name: "${name}". Provide a valid directory name, not a path.`)
   process.exit(1)
 }
 
