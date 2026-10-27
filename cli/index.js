@@ -40,5 +40,10 @@ if (!type || !name) {
   process.exit(1)
 }
 
-const config = await loadConfig()
-await buildProject({ type, name, config })
+try {
+  const config = await loadConfig()
+  await buildProject({ type, name, config })
+} catch (err) {
+  console.error(`❌ Failed to create project: ${err.message}`)
+  process.exitCode = 1
+}
