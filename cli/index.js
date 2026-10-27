@@ -11,7 +11,8 @@ const args = minimist(process.argv.slice(2), {
     h: 'help',
     v: 'version'
   },
-  boolean: ['help', 'version', 'init']
+  boolean: ['help', 'version', 'init'],
+  string: ['type', 'name']
 })
 
 if (args.help) {
@@ -40,5 +41,21 @@ if (!type || !name) {
   process.exit(1)
 }
 
-const config = await loadConfig()
-await buildProject({ type, name, config })
+if (
+  name === '.' ||
+  name === '..' ||
+  /[<>:"/\\|?*\x00-\x1F]/.test(name) ||
+  /[. ]$/.test(name) ||
+  /^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\..*)?$/i.test(name)
+) {
+  console.error(`❌ Invalid project name: "${name}". Provide a valid directory name, not a path.`)
+  process.exit(1)
+}
+
+try {
+  const config = await loadConfig()
+  await buildProject({ type, name, config })
+} catch (err) {
+  console.error(`❌ Failed to create project: ${err.message}`)
+  process.exitCode = 1
+}
