@@ -29,15 +29,20 @@ if (args.version) {
 }
 
 if (args.init) {
-  const opened = await initConfig()
-  process.exit(opened ? 0 : 1)
+  try {
+    const opened = await initConfig()
+    process.exit(opened ? 0 : 1)
+  } catch (err) {
+    console.error(`❌ Failed to initialize configuration: ${err.message}`)
+    process.exit(1)
+  }
 }
 
 const type = args.type
 const name = args.name
 
 if (!type || !name) {
-  console.error("❌ You need to provide both --type and --name.\n Usage: templatebuilder --type node --name myproject")
+  console.error('❌ Both --type and --name are required.\nUsage: templatebuilder --type nodecli --name myproject')
   process.exit(1)
 }
 

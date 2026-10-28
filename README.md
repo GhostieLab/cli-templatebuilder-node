@@ -33,10 +33,10 @@ node cli/index.js --type <type> --name <name>
 Example:
 
 ```bash
-node cli/index.js --type node --name myapp
+node cli/index.js --type nodecli --name myapp
 ```
 
-This will create a `myapp/` directory using the template defined for the `node` type.
+This will create a `myapp/` directory using the template defined for the `nodecli` type.
 
 ---
 
@@ -60,7 +60,7 @@ Example:
   "author": "Ghostie",
   "license": "MIT",
   "Templates": "G:/MyTemplates",
-  "NodeTemplate": "D:/CustomTemplates/node",
+  "NodecliTemplate": "D:/CustomTemplates/node",
   "PythonTemplate": "",
   "BashTemplate": ""
 }
@@ -72,7 +72,7 @@ Example:
 
 When creating a project, TemplateBuilder searches for templates in the following order:
 
-1. `<Type>Template` (for example `NodeTemplate`).
+1. `<Type>Template` (for example `NodecliTemplate`).
 2. `Templates/<type>`.
 3. The bundled template included with TemplateBuilder.
 

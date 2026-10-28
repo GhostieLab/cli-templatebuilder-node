@@ -14,5 +14,5 @@ Options:
   -v, --version       Display the installed version
 
 Example:
-  templatebuilder --type node --name myapp`)
+  templatebuilder --type nodecli --name myapp`)
 }
